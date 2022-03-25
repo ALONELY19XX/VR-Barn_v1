@@ -6,7 +6,7 @@ public class TrajectoryRenderer : MonoBehaviour
 {
   private bool show;
   private string id;
-  private int stepSize = 30;
+  private int stepSize = 10;
   private StateManager state;
   private LineRenderer lineRenderer;
 

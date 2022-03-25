@@ -20,6 +20,10 @@ public class StateManager : MonoBehaviour
   public int totalFrames;
   public int currentFrame;
 
+  public string selectedEntity = null;
+  public bool isCameraDetached = false;
+  public bool isPaused = false;
+
   void Start()
   {
     Init();
@@ -32,6 +36,7 @@ public class StateManager : MonoBehaviour
     totalEntities = Entities.GetTotalEntities(files[0]);
     entities = Entities.Load(files[0], totalEntities);
     totalFrames = File.ReadAllLines(Path.Combine(Application.streamingAssetsPath, Constants.MOTION_DATA_DIR, files[0])).Length - 5;
+    Debug.Log(totalFrames);
     Entities.PreprocessEntityData(entities, totalFrames);
     entityInstances = Entities.InstatiateEntities(entities, P);
 
@@ -62,6 +67,9 @@ public class StateManager : MonoBehaviour
       body.transform.rotation = Quaternion.Euler(Vector3.Scale(entities[id].keyframeTransformations[currentFrame].rotationBody, new Vector3(0.3f, -1.0f, -1.0f)));
     }
 
-    currentFrame++;
+    if (!isPaused)
+    {
+      currentFrame++;
+    }
   }
 }

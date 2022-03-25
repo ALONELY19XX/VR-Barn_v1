@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5566731134866208310}
+  - component: {fileID: 7319135530582109722}
+  - component: {fileID: 6744864824729307486}
   m_Layer: 0
   m_Name: Entity
   m_TagString: Untagged
@@ -34,6 +36,109 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7319135530582109722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269631307541161426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c2c4f7014e15d46b0308b2de9d0e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6744864824729307486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269631307541161426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 0}
+  m_Colliders:
+  - {fileID: 8910788974031616534}
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 1
+  m_SelectMode: 0
+  m_CustomReticle: {fileID: 0}
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7319135530582109722}
+        m_TargetAssemblyTypeName: SelectEntity, Assembly-CSharp
+        m_MethodName: OnEntitySelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5208024971236742990
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +384,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5566731134866208310}
     m_Modifications:
+    - target: {fileID: 1333419475020014651, guid: 6a211f60bc5e98343b139224fb9819c1, type: 3}
+      propertyPath: m_Radius
+      value: 1.6787654
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333419475020014651, guid: 6a211f60bc5e98343b139224fb9819c1, type: 3}
+      propertyPath: m_Center.y
+      value: -1.2200587
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333419475020014651, guid: 6a211f60bc5e98343b139224fb9819c1, type: 3}
+      propertyPath: m_Center.z
+      value: 0.041293524
+      objectReference: {fileID: 0}
     - target: {fileID: 4664097645506201096, guid: 6a211f60bc5e98343b139224fb9819c1, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -420,5 +537,10 @@ PrefabInstance:
 --- !u!4 &783231356341340371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7203123231167125246, guid: 6a211f60bc5e98343b139224fb9819c1, type: 3}
+  m_PrefabInstance: {fileID: 7577370895954009645}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &8910788974031616534 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 1333419475020014651, guid: 6a211f60bc5e98343b139224fb9819c1, type: 3}
   m_PrefabInstance: {fileID: 7577370895954009645}
   m_PrefabAsset: {fileID: 0}
