@@ -7,6 +7,8 @@ public class StateManager : MonoBehaviour
 {
   [SerializeField] private GameObject CameraPrefab;
   [SerializeField] private GameObject EntityPrefab;
+  [SerializeField] private GameObject P;
+  [SerializeField] private GameObject B;
 
   public string[] files;
 
@@ -31,7 +33,7 @@ public class StateManager : MonoBehaviour
     entities = Entities.Load(files[0], totalEntities);
     totalFrames = File.ReadAllLines(Path.Combine(Application.streamingAssetsPath, Constants.MOTION_DATA_DIR, files[0])).Length - 5;
     Entities.PreprocessEntityData(entities, totalFrames);
-    entityInstances = Entities.InstatiateEntities(entities, EntityPrefab);
+    entityInstances = Entities.InstatiateEntities(entities, P);
 
     InvokeRepeating("Tick", 0.0f, 0.01f);
   }
@@ -42,17 +44,22 @@ public class StateManager : MonoBehaviour
     {
       currentFrame = 0;
     }
+
     foreach (var entityInstance in entityInstances)
     {
       var id = entityInstance.Key;
 
-      var head = entityInstance.Value.transform.Find("Head");
-      var body = entityInstance.Value.transform.Find("Body");
+      var pigeon = GameObject.Find(id) as GameObject;
+
+      var head = pigeon.transform.Find("head");
+      var body = pigeon.transform.Find("body");
+
+      var entity = entities[id].keyframeTransformations[currentFrame];
 
       head.transform.position = entities[id].keyframeTransformations[currentFrame].positionHead;
+      head.transform.rotation = Quaternion.Euler(-1.0f * entities[id].keyframeTransformations[currentFrame].rotationHead);
       body.transform.position = entities[id].keyframeTransformations[currentFrame].positionBody;
-      head.transform.rotation = Quaternion.Euler(entities[id].keyframeTransformations[currentFrame].rotationHead);
-      body.transform.rotation = Quaternion.Euler(entities[id].keyframeTransformations[currentFrame].rotationBody);
+      body.transform.rotation = Quaternion.Euler(Vector3.Scale(entities[id].keyframeTransformations[currentFrame].rotationBody, new Vector3(0.3f, -1.0f, -1.0f)));
     }
 
     currentFrame++;

@@ -14,13 +14,27 @@ public static class Entities
     return (titles.Length - Constants.ROW_OFFSET) / Constants.ENTITY_PADDING_TOTAL;
   }
 
+  // public static Dictionary<string, GameObject> InstatiateEntities(Dictionary<string, Entity> entities, GameObject entityModel)
+  // {
+  //   Dictionary<string, GameObject> entityInstances = new Dictionary<string, GameObject>();
+
+  //   foreach (var entity in entities)
+  //   {
+  //     GameObject entityInstance = GameObject.Instantiate(entityModel);
+  //     entityInstance.name = entity.Value.ID;
+  //     entityInstances[entityInstance.name] = entityInstance;
+  //   }
+
+  //   return entityInstances;
+  // }
+
   public static Dictionary<string, GameObject> InstatiateEntities(Dictionary<string, Entity> entities, GameObject entityModel)
   {
     Dictionary<string, GameObject> entityInstances = new Dictionary<string, GameObject>();
 
     foreach (var entity in entities)
     {
-      GameObject entityInstance = GameObject.Instantiate(entityModel);
+      GameObject entityInstance = GameObject.Instantiate(entityModel, Vector3.zero, Quaternion.identity);
       entityInstance.name = entity.Value.ID;
       entityInstances[entityInstance.name] = entityInstance;
     }

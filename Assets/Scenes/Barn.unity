@@ -1063,13 +1063,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CameraPrefab: {fileID: 2689684910649160328, guid: df47863469596564b85ddbf5169d7d6f, type: 3}
   EntityPrefab: {fileID: 3777854149166840367, guid: 90feac891a5e7b341bb3c82d220f7b42, type: 3}
+  P: {fileID: 2269631307541161426, guid: bad34809ccdd3e543a3528789a589e73, type: 3}
+  B: {fileID: 0}
   files: []
   totalEntities: 0
   totalFrames: 0
   currentFrame: 0
-  Head: {fileID: 0}
-  Body: {fileID: 0}
-  HeatMap: {fileID: 0}
 --- !u!1 &513280917
 GameObject:
   m_ObjectHideFlags: 0
