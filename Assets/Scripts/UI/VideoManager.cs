@@ -10,7 +10,7 @@ public class VideoManager : MonoBehaviour
   {
     state = GameObject.Find("StateManager").GetComponent<StateManager>();
     slider = gameObject.GetComponent<Slider>();
-    slider.maxValue = state.totalFrames;
+    slider.maxValue = state.totalFrames - 1;
   }
 
   void Update()

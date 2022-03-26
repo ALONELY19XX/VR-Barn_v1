@@ -6,8 +6,8 @@ public class FOVLocker : MonoBehaviour
 {
   public Camera camera;
 
-  private void Update()
+  private void Start()
   {
-    camera.fieldOfView = 60.0f;
+    camera.stereoTargetEye = StereoTargetEyeMask.None;
   }
 }

@@ -1073,6 +1073,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Custom Actions",
+            "id": "8bffe870-5f4b-4d16-b1ce-5820fc24068e",
+            "actions": [
+                {
+                    "name": "Toggle Video Player",
+                    "type": "Button",
+                    "id": "914bd288-402e-4b1a-a0cf-ebdf3da514c6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Toggle Wall UI",
+                    "type": "Button",
+                    "id": "e70c63b2-3660-4482-90dd-16ce39560585",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2bcf60a7-07d9-4ac0-9446-68b282d7818e",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Toggle Video Player",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c8a4f24f-a8b9-47e3-8c2c-95f9d8452e4e",
+                    "path": "<XRController>{LeftHand}/menuButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Toggle Wall UI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

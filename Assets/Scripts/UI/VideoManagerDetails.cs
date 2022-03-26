@@ -17,8 +17,6 @@ public class VideoManagerDetails : MonoBehaviour
     textStart = GameObject.Find("Current Timestamp");
     textEnd = GameObject.Find("End Timestamp");
 
-    Debug.Log(textStart);
-
     var minutes = Mathf.FloorToInt(state.totalFrames / 100.0f / 60.0f);
     var seconds = state.totalFrames / 100 - (100 * 60 * minutes);
     var minutesStr = minutes < 10 ? $"0{minutes}" : minutes + "";

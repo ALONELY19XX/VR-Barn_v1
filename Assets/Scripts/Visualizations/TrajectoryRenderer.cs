@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TrajectoryRenderer : MonoBehaviour
 {
-  private bool show;
   private string id;
   private int stepSize = 10;
   private StateManager state;
@@ -14,24 +13,23 @@ public class TrajectoryRenderer : MonoBehaviour
 
   void Start()
   {
-    show = false;
     id = transform.root.name;
 
     lineRenderer = gameObject.AddComponent<LineRenderer>();
     lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-    lineRenderer.widthMultiplier = 0.005f;
+    lineRenderer.widthMultiplier = 0.01f;
 
     Gradient gradient = new Gradient();
 
     Color color = new Color(
-      (float)Random.Range(0, 255),
-      (float)Random.Range(0, 255),
-      (float)Random.Range(0, 255)
+      (float)Random.Range(0, 255) / 255.0f,
+      (float)Random.Range(0, 255) / 255.0f,
+      (float)Random.Range(0, 255) / 255.0f
     );
 
     gradient.SetKeys(
       new GradientColorKey[] { new GradientColorKey(color, 0.0f), new GradientColorKey(color, 1.0f) },
-      new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 1.0f) }
+      new GradientAlphaKey[] { new GradientAlphaKey(0.1f, 0.0f), new GradientAlphaKey(1.0f, 1.0f) }
     );
 
     lineRenderer.colorGradient = gradient;
@@ -46,17 +44,21 @@ public class TrajectoryRenderer : MonoBehaviour
 
     int points = Mathf.FloorToInt(frame / stepSize);
 
-    lineRenderer.positionCount = points;
-
     for (int p = 0; p < points; p++)
     {
-      if (bodyPart == "HEAD")
+      if (bodyPart == "HEAD" && state.showHeadTrajectories)
       {
+        lineRenderer.positionCount = points;
         lineRenderer.SetPosition(p, entity.keyframeTransformations[stepSize * p].positionHead);
+      }
+      else if (bodyPart == "BODY" && state.showBodyTrajectories)
+      {
+        lineRenderer.positionCount = points;
+        lineRenderer.SetPosition(p, entity.keyframeTransformations[stepSize * p].positionBody);
       }
       else
       {
-        lineRenderer.SetPosition(p, entity.keyframeTransformations[stepSize * p].positionBody);
+        lineRenderer.positionCount = 0;
       }
     }
   }

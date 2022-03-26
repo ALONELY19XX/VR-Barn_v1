@@ -7,8 +7,7 @@ public class StateManager : MonoBehaviour
 {
   [SerializeField] private GameObject CameraPrefab;
   [SerializeField] private GameObject EntityPrefab;
-  [SerializeField] private GameObject P;
-  [SerializeField] private GameObject B;
+  [SerializeField] private GameObject SelectedEntityPanel;
 
   public string[] files;
 
@@ -21,8 +20,24 @@ public class StateManager : MonoBehaviour
   public int currentFrame;
 
   public string selectedEntity = null;
+  public string selectedCamera = null;
   public bool isCameraDetached = false;
   public bool isPaused = false;
+
+  public bool showTrajectories = false;
+  public bool showHeadTrajectories = false;
+  public bool showBodyTrajectories = false;
+  public bool showCoveredDistance = false;
+  public bool fadeTrajectories = false;
+  public bool showNameplates = false;
+  public bool showWallUI = true;
+  public bool showVideoPlayer = true;
+
+  public bool showFrontVisionCone = false;
+  public bool showLeftVisionCone = false;
+  public bool showRightVisionCone = false;
+  public bool showDistanceToOthers = false;
+  public bool showEntityTrahectories = false;
 
   void Start()
   {
@@ -36,9 +51,8 @@ public class StateManager : MonoBehaviour
     totalEntities = Entities.GetTotalEntities(files[0]);
     entities = Entities.Load(files[0], totalEntities);
     totalFrames = File.ReadAllLines(Path.Combine(Application.streamingAssetsPath, Constants.MOTION_DATA_DIR, files[0])).Length - 5;
-    Debug.Log(totalFrames);
     Entities.PreprocessEntityData(entities, totalFrames);
-    entityInstances = Entities.InstatiateEntities(entities, P);
+    entityInstances = Entities.InstatiateEntities(entities, EntityPrefab);
 
     InvokeRepeating("Tick", 0.0f, 0.01f);
   }
