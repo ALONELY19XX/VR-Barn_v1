@@ -5,20 +5,21 @@ public class SelectEntity : MonoBehaviour
   public void OnEntitySelection()
   {
     var state = GameObject.Find("StateManager").GetComponent<StateManager>();
+    ResetPreviousSelection();
     state.selectedEntity = gameObject.name;
-    Debug.Log(state.selectedEntity);
   }
 
-  public void OnHoverEntityEnter()
+  private void ResetPreviousSelection()
   {
-    var outline = gameObject.GetComponent<Outline>();
-    Debug.Log("XDDD");
-    outline.OutlineWidth = 6.0f;
-  }
-
-  public void OnHoverEntityLeave()
-  {
-    var outline = gameObject.GetComponent<Outline>();
-    outline.OutlineWidth = 0.0f;
+    var state = GameObject.Find("StateManager").GetComponent<StateManager>();
+    if (state.selectedEntity != null && state.selectedEntity != "")
+    {
+      var entity = state.entityInstances[state.selectedEntity];
+      entity.transform.Find("head/root/view volume").gameObject.SetActive(false);
+      entity.transform.Find("head/root/view volume left eye").gameObject.SetActive(false);
+      entity.transform.Find("head/root/view volume right eye").gameObject.SetActive(false);
+      entity.transform.Find("head/root/Camera").GetComponent<Camera>().enabled = false;
+      entity.transform.Find("head/root/Stream Camera").GetComponent<Camera>().enabled = false;
+    }
   }
 }

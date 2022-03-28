@@ -9,6 +9,10 @@ public class XRInputListener : MonoBehaviour
   [SerializeField] InputActionReference toggleVideoPlayerAction = null;
   [SerializeField] InputActionReference toggleWallUIReference = null;
 
+  [SerializeField] GameObject videoTrack;
+  [SerializeField] GameObject wallUIs;
+  [SerializeField] Camera mainCamera;
+
   void Awake()
   {
     toggleVideoPlayerAction.action.started += ToggleVideoPlayer;
@@ -23,15 +27,33 @@ public class XRInputListener : MonoBehaviour
 
   private void ToggleVideoPlayer(InputAction.CallbackContext context)
   {
-    state.showVideoPlayer = !state.showVideoPlayer;
-    var videoPlayerUI = GameObject.Find("HUD/Video Track");
-    videoPlayerUI.SetActive(state.showVideoPlayer);
+    if (!state.isCameraDetached)
+    {
+      state.showVideoPlayer = !state.showVideoPlayer;
+      //var videoPlayerUI = GameObject.Find("Video Track");
+      //videoPlayerUI.SetActive(state.showVideoPlayer);
+      videoTrack.SetActive(state.showVideoPlayer);
+    }
+    else
+    {
+      mainCamera.enabled = true;
+      state.isCameraDetached = false;
+      if (state.selectedEntity != null && state.selectedEntity != "")
+      {
+        state.entityInstances[state.selectedEntity].transform.Find("head/root/Camera").GetComponent<Camera>().enabled = false;
+      }
+      if (state.selectedCamera != null && state.selectedCamera != "")
+      {
+        state.cameras[state.selectedCamera].transform.Find("Camera").GetComponent<Camera>().enabled = false;
+      }
+    }
   }
 
   private void ToggleWallUI(InputAction.CallbackContext context)
   {
     state.showWallUI = !state.showWallUI;
-    var wallUI = GameObject.Find("Wall UIs");
-    wallUI.SetActive(state.showWallUI);
+    wallUIs.SetActive(state.showWallUI);
+    // var wallUI = GameObject.Find("Wall UIs");
+    // wallUI.SetActive(state.showWallUI);
   }
 }

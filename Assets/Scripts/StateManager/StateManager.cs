@@ -38,6 +38,7 @@ public class StateManager : MonoBehaviour
   public bool showRightVisionCone = false;
   public bool showDistanceToOthers = false;
   public bool showEntityTrahectories = false;
+  public bool showCameraVisionCone = false;
 
   void Start()
   {
