@@ -22,6 +22,7 @@ public class ShowTrajectories : MonoBehaviour
 
     state.showHeadTrajectories = false;
     state.showBodyTrajectories = false;
+    state.showRecentTrajectories = false;
     state.showTrajectories = toggle.isOn;
   }
 }

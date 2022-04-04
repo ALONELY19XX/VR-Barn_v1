@@ -42,24 +42,69 @@ public class TrajectoryRenderer : MonoBehaviour
     int frame = state.currentFrame;
     Entity entity = state.entities[id];
 
-    int points = Mathf.FloorToInt(frame / stepSize);
-
-    for (int p = 0; p < points; p++)
+    if (state.showTrajectories)
     {
-      if (bodyPart == "HEAD" && state.showHeadTrajectories)
+      if (state.showRecentTrajectories)
       {
-        lineRenderer.positionCount = points;
-        lineRenderer.SetPosition(p, entity.keyframeTransformations[stepSize * p].positionHead);
+        int points;
+
+        if (frame > 1000)
+        {
+          points = 100;
+        }
+        else
+        {
+          points = Mathf.FloorToInt(frame / stepSize);
+        }
+
+        var start = frame > 1000 ? frame - 1000 : 0;
+
+        for (int p = 0; p < points; p++)
+        {
+          if (bodyPart == "HEAD" && state.showHeadTrajectories)
+          {
+            lineRenderer.positionCount = points;
+            lineRenderer.SetPosition(p, entity.keyframeTransformations[start + stepSize * p].positionHead);
+          }
+          else if (bodyPart == "BODY" && state.showBodyTrajectories)
+          {
+            lineRenderer.positionCount = points;
+            lineRenderer.SetPosition(p, entity.keyframeTransformations[start + stepSize * p].positionBody);
+          }
+          else
+          {
+            lineRenderer.positionCount = 0;
+          }
+        }
       }
-      else if (bodyPart == "BODY" && state.showBodyTrajectories)
-      {
-        lineRenderer.positionCount = points;
-        lineRenderer.SetPosition(p, entity.keyframeTransformations[stepSize * p].positionBody);
-      }
+
       else
       {
-        lineRenderer.positionCount = 0;
+        int points = Mathf.FloorToInt(frame / stepSize);
+        for (int p = 0; p < points; p++)
+        {
+          if (bodyPart == "HEAD" && state.showHeadTrajectories)
+          {
+            lineRenderer.positionCount = points;
+            lineRenderer.SetPosition(p, entity.keyframeTransformations[stepSize * p].positionHead);
+          }
+          else if (bodyPart == "BODY" && state.showBodyTrajectories)
+          {
+            lineRenderer.positionCount = points;
+            lineRenderer.SetPosition(p, entity.keyframeTransformations[stepSize * p].positionBody);
+          }
+          else
+          {
+            lineRenderer.positionCount = 0;
+          }
+        }
       }
+      //int points = Mathf.FloorToInt(frame / stepSize);
     }
+    else
+    {
+      lineRenderer.positionCount = 0;
+    }
+
   }
 }

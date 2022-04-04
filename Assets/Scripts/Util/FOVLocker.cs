@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class FOVLocker : MonoBehaviour
 {
-  public Camera camera;
+  public Camera cam;
 
   private void Start()
   {
-    camera.stereoTargetEye = StereoTargetEyeMask.None;
+    cam.stereoTargetEye = StereoTargetEyeMask.None;
   }
 }

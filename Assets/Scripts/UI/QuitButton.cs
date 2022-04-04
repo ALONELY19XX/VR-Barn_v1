@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class QuitButton : MonoBehaviour
 {
-    public void OnClick()
-    {
-        Application.Quit();
-    }
+  public void OnClick()
+  {
+    Debug.Log("QUIT");
+    Application.Quit();
+  }
 }

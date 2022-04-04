@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UnselectEntity : MonoBehaviour
 {
   [SerializeField] StateManager state;
+  [SerializeField] Toggle entityFrontConeToggle;
+  [SerializeField] Toggle entityLeftConeToggle;
+  [SerializeField] Toggle entityRightConeToggle;
+  [SerializeField] Toggle entityViewStreamToggle;
 
   public void OnClick()
   {
@@ -16,5 +21,14 @@ public class UnselectEntity : MonoBehaviour
     entity.transform.Find("head/root/Stream Camera").GetComponent<Camera>().enabled = false;
     entity.transform.Find("Canvas/ViewStream").gameObject.SetActive(false);
     state.selectedEntity = null;
+
+    state.showFrontVisionCone = false;
+    state.showLeftVisionCone = false;
+    state.showRightVisionCone = false;
+
+    entityFrontConeToggle.isOn = false;
+    entityLeftConeToggle.isOn = false;
+    entityRightConeToggle.isOn = false;
+    entityViewStreamToggle.isOn = false;
   }
 }

@@ -28,7 +28,7 @@ public class StateManager : MonoBehaviour
   public bool showHeadTrajectories = false;
   public bool showBodyTrajectories = false;
   public bool showCoveredDistance = false;
-  public bool fadeTrajectories = false;
+  public bool showRecentTrajectories = false;
   public bool showNameplates = false;
   public bool showWallUI = true;
   public bool showVideoPlayer = true;

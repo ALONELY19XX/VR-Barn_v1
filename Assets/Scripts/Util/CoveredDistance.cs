@@ -25,7 +25,7 @@ public class CoveredDistance : MonoBehaviour
     {
       var points = Mathf.FloorToInt(state.currentFrame / stepSize);
 
-      Vector3[] checkpoints = new Vector3[points + 1];
+      Vector3[] checkpoints = new Vector3[points];
       float distance = 0.0f;
 
       for (int x = 0; x < points; x++)
@@ -38,7 +38,8 @@ public class CoveredDistance : MonoBehaviour
         distance += Vector3.Distance(checkpoints[x], checkpoints[x + 1]);
       }
 
-      label.text = $"Travelled: {distance}m";
+      string distanceStr = distance.ToString("n2");
+      label.text = $"Travelled: {distanceStr}m";
 
     }
   }

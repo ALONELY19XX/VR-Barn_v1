@@ -29,6 +29,9 @@ public static class Constants
   public const string CAMERA_ORIENTATION_TAG = "ORIENTATION";
   public const int CAMERA_TRANSFORM_INDEX = 4;
   public const string DEVICE_ID = "DEVICEID";
+  public const string USER_ID = "USERID";
+  public const string SENSOR_SIZE = "SENSOR_SIZE";
+  public const string FOCAL_LENGTH = "FOCAL_LENGTH";
 
   /* HEATMAP */
   public const int HEATMAP_ROWS = 30;

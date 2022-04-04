@@ -5,6 +5,7 @@ using System.Xml;
 using System.IO;
 using System.Linq;
 using System.Globalization;
+using System;
 
 public static class Cameras
 {
@@ -22,13 +23,21 @@ public static class Cameras
     foreach (XmlNode camera in cameraNodes)
     {
       string deviceId = camera.Attributes[Constants.DEVICE_ID].Value;
+      string sensorSizeRaw = camera.Attributes[Constants.SENSOR_SIZE].Value;
+      int[] sensorSize = Array.ConvertAll(sensorSizeRaw.Split(' '), s => int.Parse(s));
+      //Debug.Log($"{sensorSize[0]} {sensorSize[1]}");
 
       XmlNode cameraTransform = camera.ChildNodes[Constants.CAMERA_TRANSFORM_INDEX].FirstChild;
       string positionRaw = cameraTransform.Attributes[Constants.CAMERA_POSITION_TAG].Value;
       string orientationRaw = cameraTransform.Attributes[Constants.CAMERA_ORIENTATION_TAG].Value;
+      string focalLengthRaw = cameraTransform.Attributes[Constants.FOCAL_LENGTH].Value;
+
+      //Debug.Log($"{sensorSizeRaw} ----- {focalLengthRaw}");
 
       float[] position = positionRaw.Split(' ').Select(coordinate => float.Parse(coordinate, CultureInfo.InvariantCulture) / 1000.0f).ToArray();
       float[] rotation = orientationRaw.Split(' ').Select(rotation => float.Parse(rotation, CultureInfo.InvariantCulture) / 1000.0f).ToArray();
+      float focalLength = float.Parse(focalLengthRaw, CultureInfo.InvariantCulture);
+
 
       Vector3 positionVector = new Vector3(position[0], position[2], position[1]);
       Quaternion rotationQuaternion = new Quaternion(rotation[0], rotation[2], rotation[1], rotation[3]);
@@ -37,6 +46,11 @@ public static class Cameras
       cameraInstance.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
       cameraInstance.transform.Rotate(-90.0f, 0.0f, 0.0f);
       cameraInstance.name = deviceId;
+
+      var cameraComponent = cameraInstance.transform.Find("Camera").GetComponent<Camera>();
+      cameraComponent.usePhysicalProperties = true;
+      cameraComponent.focalLength = focalLength;
+      cameraComponent.sensorSize = new Vector2(sensorSize[0], sensorSize[1]);
 
       var cameraGroup = GameObject.Find("Camera Group");
       cameraInstance.transform.SetParent(cameraGroup.transform, true);
