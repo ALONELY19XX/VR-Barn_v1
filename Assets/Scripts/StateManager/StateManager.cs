@@ -14,6 +14,8 @@ public class StateManager : MonoBehaviour
   public Dictionary<string, GameObject> cameras;
   public Dictionary<string, Entity> entities;
   public Dictionary<string, GameObject> entityInstances;
+  public Dictionary<string, int[]> heatmapDistributions;
+  public GameObject[] tileInstances;
 
   public int totalEntities;
   public int totalFrames;
@@ -39,6 +41,7 @@ public class StateManager : MonoBehaviour
   public bool showDistanceToOthers = false;
   public bool showEntityTrahectories = false;
   public bool showCameraVisionCone = false;
+  public bool showHeatmap = false;
 
   void Start()
   {
@@ -54,6 +57,8 @@ public class StateManager : MonoBehaviour
     totalFrames = File.ReadAllLines(Path.Combine(Application.streamingAssetsPath, Constants.MOTION_DATA_DIR, files[0])).Length - 5;
     Entities.PreprocessEntityData(entities, totalFrames);
     entityInstances = Entities.InstatiateEntities(entities, EntityPrefab);
+    heatmapDistributions = Entities.CalculateHeatmapDistributions(entities, totalFrames);
+    Debug.Log(Mathf.Max(heatmapDistributions["Entity-0"]));
 
     InvokeRepeating("Tick", 0.0f, 0.01f);
   }

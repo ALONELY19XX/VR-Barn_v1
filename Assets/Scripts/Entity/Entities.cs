@@ -132,4 +132,40 @@ public static class Entities
       }
     }
   }
+
+  public static Dictionary<string, int[]> CalculateHeatmapDistributions(Dictionary<string, Entity> entities, int totalFrames)
+  {
+
+    Dictionary<string, int[]> heatmapDist = new Dictionary<string, int[]>();
+    //float gridStartX = -3.265f;
+    float gridEndX = 3.265f;
+    //float gridStartZ = -7.3f;
+    float gridEndZ = 7.3f;
+    int totalTiles = Constants.HEATMAP_ROWS * Constants.HEATMAP_COLS;
+
+    float tileHeight = gridEndX * 2 / Constants.HEATMAP_ROWS;
+    float tileWidth = gridEndZ * 2 / Constants.HEATMAP_COLS;
+
+    foreach (var key in entities.Keys)
+    {
+      heatmapDist[key] = new int[totalTiles];
+      for (int x = 0; x < totalFrames; x++)
+      {
+        Vector3 posAtFrame = entities[key].keyframeTransformations[x].positionBody;
+        float posX = posAtFrame.x;
+        float posZ = posAtFrame.z;
+
+        float posZNorm = posZ + gridEndZ;
+        float posXNorm = posX + gridEndX;
+
+        int xTileIndex = Mathf.FloorToInt(Mathf.Clamp(posXNorm / tileHeight, 0, Constants.HEATMAP_ROWS));
+        int zTileIndex = Mathf.FloorToInt(Mathf.Clamp(posZNorm / tileWidth, 0, Constants.HEATMAP_COLS));
+
+        //int _rows = (int)Mathf.Clamp(xTileIndex - 1, 0, Constants.HEATMAP_ROWS - 1);
+
+        heatmapDist[key][zTileIndex + Constants.HEATMAP_COLS * xTileIndex] += 1;
+      }
+    }
+    return heatmapDist;
+  }
 }

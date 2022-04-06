@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class VisibilityChecker : MonoBehaviour
 {
+  public bool isVisible = false;
   private StateManager state;
   [SerializeField] GameObject visibilityIndicator;
 
@@ -21,16 +22,19 @@ public class VisibilityChecker : MonoBehaviour
       bool isVisibleToSelectedEntity = isWithinViewport(viewportCoordinates);
       if (isVisibleToSelectedEntity)
       {
-        visibilityIndicator.SetActive(true);
+        isVisible = true;
+        //visibilityIndicator.SetActive(true);
       }
       else
       {
-        visibilityIndicator.SetActive(false);
+        isVisible = false;
+        //visibilityIndicator.SetActive(false);
       }
     }
     else
     {
-      visibilityIndicator.SetActive(false);
+      isVisible = false;
+      //visibilityIndicator.SetActive(false);
     }
   }
 
