@@ -10,7 +10,7 @@ public class UnselectCamera : MonoBehaviour
   {
     var cam = state.cameras[state.selectedCamera];
     cam.transform.Find("Camera").GetComponent<Camera>().enabled = false;
-    cam.transform.Find("cameraviewvolume").gameObject.SetActive(false);
+    //cam.transform.Find("cameraviewvolume").gameObject.SetActive(false);
     state.selectedCamera = null;
   }
 }

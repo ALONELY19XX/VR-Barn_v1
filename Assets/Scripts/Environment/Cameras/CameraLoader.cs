@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Xml;
 using System.IO;
 using System.Linq;
@@ -23,6 +24,7 @@ public static class Cameras
     foreach (XmlNode camera in cameraNodes)
     {
       string deviceId = camera.Attributes[Constants.DEVICE_ID].Value;
+      string displayType = camera.Attributes["DISPLAY_TYPE"].Value;
       string sensorSizeRaw = camera.Attributes[Constants.SENSOR_SIZE].Value;
       int[] sensorSize = Array.ConvertAll(sensorSizeRaw.Split(' '), s => int.Parse(s));
       //Debug.Log($"{sensorSize[0]} {sensorSize[1]}");
@@ -52,6 +54,12 @@ public static class Cameras
       cameraComponent.focalLength = focalLength;
       cameraComponent.sensorSize = new Vector2(sensorSize[0], sensorSize[1]);
 
+      cameraInstance.transform.Find("Canvas/display type").GetComponent<TMPro.TextMeshProUGUI>().text = $"Type: {displayType}";
+      cameraInstance.transform.Find("Canvas/device id").GetComponent<TMPro.TextMeshProUGUI>().text = $"Device ID: {deviceId}";
+
+      CamMaterialLoader loader = cameraInstance.transform.Find("cammodel").GetComponent<CamMaterialLoader>();
+      cameraInstance.transform.Find("cammodel").GetComponent<Renderer>().material = getMaterial(loader, displayType);
+
       var cameraGroup = GameObject.Find("Camera Group");
       cameraInstance.transform.SetParent(cameraGroup.transform, true);
 
@@ -59,6 +67,22 @@ public static class Cameras
     }
 
     return cameras;
+  }
+
+  public static Material getMaterial(CamMaterialLoader loader, string displayType)
+  {
+    if (displayType == "Vue")
+    {
+      return loader.vueMat;
+    }
+    else if (displayType == "Vero v2.2")
+    {
+      return loader.veroMat;
+    }
+    else
+    {
+      return loader.vantageMat;
+    }
   }
 }
 
