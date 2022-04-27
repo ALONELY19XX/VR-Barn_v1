@@ -18,6 +18,20 @@ public class SelectCamera : MonoBehaviour
     {
       var cam = state.cameras[state.selectedCamera];
       cam.transform.Find("Camera").gameObject.GetComponent<Camera>().enabled = false;
+      cam.transform.Find("Stream Camera").gameObject.GetComponent<Camera>().enabled = false;
+      var cone = GameObject.Find($"Camera Cones/{state.selectedCamera}");
+      if (cone != null)
+      {
+        cone.SetActive(false);
+      }
+      state.cameraConeToggle.isOn = false;
+      state.cameraStreamToggle.isOn = false;
+      state.selectedCamera = null;
+      var stream = GameObject.Find("Camera Stream/Canvas");
+      if (stream != null)
+      {
+        stream.SetActive(false);
+      }
     }
   }
 }

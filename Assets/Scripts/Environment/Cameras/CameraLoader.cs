@@ -53,6 +53,11 @@ public static class Cameras
       cameraComponent.usePhysicalProperties = true;
       cameraComponent.focalLength = focalLength;
       cameraComponent.sensorSize = new Vector2(sensorSize[0], sensorSize[1]);
+      
+      var streamingCameraComponent = cameraInstance.transform.Find("Stream Camera").GetComponent<Camera>();
+      streamingCameraComponent.usePhysicalProperties = true;
+      streamingCameraComponent.focalLength = focalLength;
+      streamingCameraComponent.sensorSize = new Vector2(sensorSize[0], sensorSize[1]);
 
       cameraInstance.transform.Find("Canvas/display type").GetComponent<TMPro.TextMeshProUGUI>().text = $"Type: {displayType}";
       cameraInstance.transform.Find("Canvas/device id").GetComponent<TMPro.TextMeshProUGUI>().text = $"Device ID: {deviceId}";

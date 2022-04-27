@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 
 public class StateManager : MonoBehaviour
 {
   [SerializeField] private GameObject CameraPrefab;
   [SerializeField] private GameObject EntityPrefab;
   [SerializeField] private GameObject SelectedEntityPanel;
+  [SerializeField] public GameObject cameraStream;
+  [SerializeField] public GameObject heatMap;
 
   public string[] files;
 
   public Dictionary<string, GameObject> cameras;
   public Dictionary<string, Entity> entities;
   public Dictionary<string, GameObject> entityInstances;
+  public Dictionary<string, GameObject> cameraConeInstances = new Dictionary<string, GameObject>();
   public Dictionary<string, int[]> heatmapDistributions;
   public GameObject[] tileInstances;
 
@@ -42,6 +46,14 @@ public class StateManager : MonoBehaviour
   public bool showEntityTrahectories = false;
   public bool showCameraVisionCone = false;
   public bool showHeatmap = false;
+
+  [SerializeField] public Toggle cameraConeToggle;
+  [SerializeField] public Toggle cameraStreamToggle;
+  [SerializeField] public Toggle entityViewConeFront;
+  [SerializeField] public Toggle entityViewConeLeft;
+  [SerializeField] public Toggle entityViewConeRight;
+  [SerializeField] public Toggle entityViewConeHeatmap;
+  [SerializeField] public Toggle entityViewConeStream;
 
   void Start()
   {

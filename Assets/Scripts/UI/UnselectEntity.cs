@@ -20,15 +20,26 @@ public class UnselectEntity : MonoBehaviour
     entity.transform.Find("head/root/Camera").GetComponent<Camera>().enabled = false;
     entity.transform.Find("head/root/Stream Camera").GetComponent<Camera>().enabled = false;
     entity.transform.Find("Canvas/ViewStream").gameObject.SetActive(false);
-    state.selectedEntity = null;
 
+    state.showHeatmap = false;
+    state.heatMap.SetActive(false);
+    
     state.showFrontVisionCone = false;
     state.showLeftVisionCone = false;
     state.showRightVisionCone = false;
 
-    entityFrontConeToggle.isOn = false;
-    entityLeftConeToggle.isOn = false;
-    entityRightConeToggle.isOn = false;
-    entityViewStreamToggle.isOn = false;
+    //entityFrontConeToggle.isOn = false;
+    //entityLeftConeToggle.isOn = false;
+    //entityRightConeToggle.isOn = false;
+    //state.entityViewConeHeatmap.isOn = false;
+    //entityViewStreamToggle.isOn = false;
+    
+    state.entityViewConeFront.isOn = false;
+    state.entityViewConeRight.isOn = false;
+    state.entityViewConeLeft.isOn = false;
+    state.entityViewConeHeatmap.isOn = false;
+    state.entityViewConeStream.isOn = false;
+    
+    state.selectedEntity = null;
   }
 }

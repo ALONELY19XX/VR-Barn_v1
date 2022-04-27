@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CameraCone : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class CameraCone : MonoBehaviour
     void CreateCameraCone()
     {
         var cameras = state.cameras;
-        Debug.Log("LOL" + cameras.Count);
 
         foreach (var cameraObj in cameras.Values)
         {
@@ -30,7 +30,10 @@ public class CameraCone : MonoBehaviour
             root.GetComponent<MeshFilter>().mesh = mesh;
             root.name = cameraObj.name;
             root.transform.parent = gameObject.transform;
+            root.layer = LayerMask.NameToLayer("EntityVolume");
+            root.GetComponent<MeshRenderer>().shadowCastingMode = ShadowCastingMode.Off;
             root.SetActive(false);
+            state.cameraConeInstances[root.name] = root;
             
 
             Vector3[] vertices = new Vector3[5];

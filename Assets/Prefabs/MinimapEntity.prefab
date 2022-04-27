@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5400417351881136593}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MinimapEntity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5463963048922554796}
   - component: {fileID: 6952735962850598400}
   - component: {fileID: 3920250734276292324}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,6 +138,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: cone
       objectReference: {fileID: 0}
+    - target: {fileID: 249864954968664288, guid: d4a181c0508d5784cb7475586f6d4fbb, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 304758817633527765, guid: d4a181c0508d5784cb7475586f6d4fbb, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 593457513342022234, guid: d4a181c0508d5784cb7475586f6d4fbb, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -193,6 +201,14 @@ PrefabInstance:
     - target: {fileID: 593457513342022234, guid: d4a181c0508d5784cb7475586f6d4fbb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646241905557080908, guid: d4a181c0508d5784cb7475586f6d4fbb, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1107805353917498333, guid: d4a181c0508d5784cb7475586f6d4fbb, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4a181c0508d5784cb7475586f6d4fbb, type: 3}

@@ -2672,6 +2672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36b26d90d6173146ba5a3abad01c712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: 3937f632bb8b7de47bd9f29f81de4efb, type: 2}
   bodyPart: BODY
 --- !u!1 &6773049875917369029
 GameObject:
@@ -2716,6 +2717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36b26d90d6173146ba5a3abad01c712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: 3937f632bb8b7de47bd9f29f81de4efb, type: 2}
   bodyPart: HEAD
 --- !u!114 &7013790994413685155
 MonoBehaviour:

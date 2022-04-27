@@ -8,6 +8,7 @@ public class TrajectoryRenderer : MonoBehaviour
   private int stepSize = 10;
   private StateManager state;
   private LineRenderer lineRenderer;
+  [SerializeField] private Material mat;
 
   [SerializeField] string bodyPart;
 
@@ -17,6 +18,7 @@ public class TrajectoryRenderer : MonoBehaviour
 
     lineRenderer = gameObject.AddComponent<LineRenderer>();
     lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+    lineRenderer.sortingOrder = 100;
     lineRenderer.widthMultiplier = 0.01f;
 
     Gradient gradient = new Gradient();
