@@ -39,7 +39,7 @@ public class CoveredDistance : MonoBehaviour
       }
 
       string distanceStr = distance.ToString("n2");
-      label.text = $"Travelled: {distanceStr}m";
+      label.text = $"{distanceStr}m";
 
     }
   }

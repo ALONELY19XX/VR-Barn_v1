@@ -59,7 +59,7 @@ public static class EntityInterpreter
         string pzsb = valuesRaw[2 + i * Constants.ENTITY_PADDING_TOTAL + 10];
         float pzb = string.IsNullOrEmpty(pzsb) ? float.PositiveInfinity : float.Parse(pzsb, CultureInfo.InvariantCulture) / 1000.0f;
 
-        entities[i].keyframeTransformations[frame - 5] = new EntityTransformation(rxh, ryh, rzh, pxh, pyh, pzh, rxb, ryb, rzb, pxb, pyb, pzb);
+        //entities[i].keyframeTransformations[frame - 5] = new EntityTransformation(rxh, ryh, rzh, pxh, pyh, pzh, rxb, ryb, rzb, pxb, pyb, pzb);
       }
     }
 

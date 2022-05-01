@@ -14,6 +14,7 @@ public static class Constants
   public const int HEADER_OFFSET = 5; // ignore csv header data
   public const int ROW_OFFSET = 2; // ignore first two column meta values
   public const int ENTITY_PADDING_TOTAL = 12; // each entity owns 12 colums: 3x rotation + 3x position for head AND body
+  //public const int ENTITY_PADDING_TOTAL = 14; // <------------------------------
   public const int ENTITY_PADDING_POSITION = 3;
   public const int ENTITY_PADDING_ROTATION = 3;
   public const int HEADER_TITLES_OFFSET = 4;

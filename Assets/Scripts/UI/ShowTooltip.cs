@@ -13,7 +13,6 @@ public class ShowTooltip : MonoBehaviour
     {
         tooltipContainer.SetActive(true);
         text.text = tooltipText;
-        Debug.Log("XDDDDDDDDD");
     }
 
     public void HideTooltipOnHoverExit()

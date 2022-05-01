@@ -68,29 +68,69 @@ public static class Entities
         float xRotHead = string.IsNullOrEmpty(xRotHeadRaw) ? float.PositiveInfinity : float.Parse(xRotHeadRaw, CultureInfo.InvariantCulture) * Mathf.Rad2Deg;
         float yRotHead = string.IsNullOrEmpty(yRotHeadRaw) ? float.PositiveInfinity : float.Parse(yRotHeadRaw, CultureInfo.InvariantCulture) * Mathf.Rad2Deg;
         float zRotHead = string.IsNullOrEmpty(zRotHeadRaw) ? float.PositiveInfinity : float.Parse(zRotHeadRaw, CultureInfo.InvariantCulture) * Mathf.Rad2Deg;
-
+        
         string xRotBodyRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 8];
         string yRotBodyRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 6];
         string zRotBodyRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 7];
         float xRotBody = string.IsNullOrEmpty(xRotBodyRaw) ? float.PositiveInfinity : float.Parse(xRotBodyRaw, CultureInfo.InvariantCulture) * Mathf.Rad2Deg;
         float yRotBody = string.IsNullOrEmpty(yRotBodyRaw) ? float.PositiveInfinity : float.Parse(yRotBodyRaw, CultureInfo.InvariantCulture) * Mathf.Rad2Deg;
         float zRotBody = string.IsNullOrEmpty(zRotBodyRaw) ? float.PositiveInfinity : float.Parse(zRotBodyRaw, CultureInfo.InvariantCulture) * Mathf.Rad2Deg;
-
+        
         string xPosHeadRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 3];
         string yPosHeadRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 5];
         string zPosHeadRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 4];
         float xPosHead = string.IsNullOrEmpty(xPosHeadRaw) ? float.PositiveInfinity : float.Parse(xPosHeadRaw, CultureInfo.InvariantCulture) / 1000.0f;
         float yPosHead = string.IsNullOrEmpty(yPosHeadRaw) ? float.PositiveInfinity : float.Parse(yPosHeadRaw, CultureInfo.InvariantCulture) / 1000.0f;
         float zPosHead = string.IsNullOrEmpty(zPosHeadRaw) ? float.PositiveInfinity : float.Parse(zPosHeadRaw, CultureInfo.InvariantCulture) / 1000.0f;
-
+        
         string xPosBodyRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 9];
         string yPosBodyRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 11];
         string zPosBodyRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 10];
         float xPosBody = string.IsNullOrEmpty(xPosBodyRaw) ? float.PositiveInfinity : float.Parse(xPosBodyRaw, CultureInfo.InvariantCulture) / 1000.0f;
         float yPosBody = string.IsNullOrEmpty(yPosBodyRaw) ? float.PositiveInfinity : float.Parse(yPosBodyRaw, CultureInfo.InvariantCulture) / 1000.0f;
         float zPosBody = string.IsNullOrEmpty(zPosBodyRaw) ? float.PositiveInfinity : float.Parse(zPosBodyRaw, CultureInfo.InvariantCulture) / 1000.0f;
-
+        
         entitiesArr[e].keyframeTransformations[frame - 5] = new EntityTransformation(xRotHead, yRotHead, zRotHead, xPosHead, yPosHead, zPosHead, xRotBody, yRotBody, zRotBody, xPosBody, yPosBody, zPosBody);
+        
+        
+        // string xRotHeadRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 7];
+        // string yRotHeadRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 9];
+        // string zRotHeadRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 8];
+        // string wRotHeadRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 10];
+        // float xRotHead = string.IsNullOrEmpty(xRotHeadRaw) ? float.PositiveInfinity : float.Parse(xRotHeadRaw, CultureInfo.InvariantCulture);
+        // float yRotHead = string.IsNullOrEmpty(yRotHeadRaw) ? float.PositiveInfinity : float.Parse(yRotHeadRaw, CultureInfo.InvariantCulture);
+        // float zRotHead = string.IsNullOrEmpty(zRotHeadRaw) ? float.PositiveInfinity : float.Parse(zRotHeadRaw, CultureInfo.InvariantCulture);
+        // float wRotHead = string.IsNullOrEmpty(wRotHeadRaw) ? float.PositiveInfinity : float.Parse(wRotHeadRaw, CultureInfo.InvariantCulture);
+        //
+        // string xRotBodyRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 1];
+        // string yRotBodyRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 2];
+        // string zRotBodyRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 0];
+        // string wRotBodyRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 3];
+        // float xRotBody = string.IsNullOrEmpty(xRotBodyRaw) ? float.PositiveInfinity : float.Parse(xRotBodyRaw, CultureInfo.InvariantCulture);
+        // float yRotBody = string.IsNullOrEmpty(yRotBodyRaw) ? float.PositiveInfinity : float.Parse(yRotBodyRaw, CultureInfo.InvariantCulture);
+        // float zRotBody = string.IsNullOrEmpty(zRotBodyRaw) ? float.PositiveInfinity : float.Parse(zRotBodyRaw, CultureInfo.InvariantCulture);
+        // float wRotBody = string.IsNullOrEmpty(wRotBodyRaw) ? float.PositiveInfinity : float.Parse(wRotBodyRaw, CultureInfo.InvariantCulture);
+        //
+        // string xPosHeadRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 11];
+        // string yPosHeadRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 13];
+        // string zPosHeadRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 12];
+        // float xPosHead = string.IsNullOrEmpty(xPosHeadRaw) ? float.PositiveInfinity : float.Parse(xPosHeadRaw, CultureInfo.InvariantCulture) / 1000.0f;
+        // float yPosHead = string.IsNullOrEmpty(yPosHeadRaw) ? float.PositiveInfinity : float.Parse(yPosHeadRaw, CultureInfo.InvariantCulture) / 1000.0f;
+        // float zPosHead = string.IsNullOrEmpty(zPosHeadRaw) ? float.PositiveInfinity : float.Parse(zPosHeadRaw, CultureInfo.InvariantCulture) / 1000.0f;
+        //
+        // string xPosBodyRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 4];
+        // string yPosBodyRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 6];
+        // string zPosBodyRaw = frameValues[Constants.ROW_OFFSET + e * Constants.ENTITY_PADDING_TOTAL + 5];
+        // float xPosBody = string.IsNullOrEmpty(xPosBodyRaw) ? float.PositiveInfinity : float.Parse(xPosBodyRaw, CultureInfo.InvariantCulture) / 1000.0f;
+        // float yPosBody = string.IsNullOrEmpty(yPosBodyRaw) ? float.PositiveInfinity : float.Parse(yPosBodyRaw, CultureInfo.InvariantCulture) / 1000.0f;
+        // float zPosBody = string.IsNullOrEmpty(zPosBodyRaw) ? float.PositiveInfinity : float.Parse(zPosBodyRaw, CultureInfo.InvariantCulture) / 1000.0f;
+        //
+        // entitiesArr[e].keyframeTransformations[frame - 5] = new EntityTransformation(
+        //     new Quaternion(xRotHead, yRotHead, zRotHead, 1),
+        //     new Quaternion(xRotBody, yRotBody, zRotBody, 1),
+        //     new Vector3(xPosHead, yPosHead, zPosHead),
+        //     new Vector3(xPosBody, yPosBody, zPosBody)
+        //   );
       }
     }
 

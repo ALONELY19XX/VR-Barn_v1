@@ -55,6 +55,8 @@ public class StateManager : MonoBehaviour
   [SerializeField] public Toggle entityViewConeHeatmap;
   [SerializeField] public Toggle entityViewConeStream;
 
+  public int selectedEnvId;
+
   void Start()
   {
     Init();
@@ -65,12 +67,13 @@ public class StateManager : MonoBehaviour
     files = Files.GetAllDataFiles();
     cameras = Cameras.Init(CameraPrefab);
     totalEntities = Entities.GetTotalEntities(files[0]);
+    Debug.Log("Total Pigeons: " + totalEntities);
     entities = Entities.Load(files[0], totalEntities);
     totalFrames = File.ReadAllLines(Path.Combine(Application.streamingAssetsPath, Constants.MOTION_DATA_DIR, files[0])).Length - 5;
+    Debug.Log("Total Frames: " + totalFrames);
     Entities.PreprocessEntityData(entities, totalFrames);
     entityInstances = Entities.InstatiateEntities(entities, EntityPrefab);
     heatmapDistributions = Entities.CalculateHeatmapDistributions(entities, totalFrames);
-    Debug.Log(Mathf.Max(heatmapDistributions["Entity-0"]));
 
     InvokeRepeating("Tick", 0.0f, 0.01f);
   }
@@ -94,9 +97,13 @@ public class StateManager : MonoBehaviour
       var entity = entities[id].keyframeTransformations[currentFrame];
 
       head.transform.position = entities[id].keyframeTransformations[currentFrame].positionHead;
+      //Debug.Log("POS: " + entities[id].keyframeTransformations[currentFrame].positionHead);
       head.transform.rotation = Quaternion.Euler(-1.0f * entities[id].keyframeTransformations[currentFrame].rotationHead);
+      //head.transform.rotation = Quaternion.Euler(-entities[id].keyframeTransformations[currentFrame].rotationHead.eulerAngles);
       body.transform.position = entities[id].keyframeTransformations[currentFrame].positionBody;
       body.transform.rotation = Quaternion.Euler(Vector3.Scale(entities[id].keyframeTransformations[currentFrame].rotationBody, new Vector3(0.3f, -1.0f, -1.0f)));
+      //Debug.Log("QUAT: " + entities[id].keyframeTransformations[currentFrame].rotationHead);
+      //body.transform.rotation = Quaternion.Euler(-entities[id].keyframeTransformations[currentFrame].rotationBody.eulerAngles);
     }
 
     if (!isPaused)
